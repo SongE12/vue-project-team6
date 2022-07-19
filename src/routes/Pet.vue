@@ -1,5 +1,7 @@
 <template>
-  <ul class="item-list">
+  <ul 
+    v-if="clientStore.getPet"
+    class="item-list">
     <li
       v-for="item in clientStore.getPet"
       :key="item.id"
@@ -54,7 +56,7 @@ export default {
    handler(payload){
        if(!sessionStorage.getItem('token')){
           alert('제품구매는 로그인을 해야 할 수 있습니다!')
-          this.$router.push('/signin')
+          this.$router.push('/')
           return 
         }
       this.clientStore.singleProductData = payload

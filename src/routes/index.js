@@ -1,173 +1,177 @@
-import { createRouter, createWebHistory } from 'vue-router'
-import Home from './Home.vue'
-import Sign from './Sign.vue'
-import SignIn from './SignIn.vue'
-import SignUp from './SignUp.vue'
-import MyPage from './MyPage.vue'
-import AccountList from './AccountList.vue'
-import AccountAdd from './AccountAdd.vue'
-import LoginHome from './LoginHome.vue'
-import Admin from './Admin.vue'
-import AllReadProduct from './AllReadProduct.vue'
-import AddProduct from './AddProduct.vue'
-import AllReadHistory from './AllReadHistory.vue'
-import EditProduct from './Editproduct.vue'
-import EditUserInfo from './EditUserInfo.vue'
-import DeleteProduct from './DeleteProduct.vue'
-import Store from './Store.vue'
-import PurchaseList from './PurchaseList.vue'
-import SingleProductDetail from './SingleProductDetail.vue'
-import SinglePurchasedItemDetail from './SinglePurchasedItemDetail.vue'
-import UserInfo from './UserInfo.vue'
-import MyPageMain from './MyPageMain.vue'
-import EveryItem from './EveryItem.vue'
-import Equipment from './Equipment.vue'
-import Consumption from './Consumption.vue'
-import Pet from './Pet.vue'
-import SearchedProduct from './SearchedProduct.vue'
-import AdminPageMain from './AdminPageMain.vue'
-import StoreMainPage from './StoreMainPage.vue'
-import NotFound from './NotFound.vue'
+import { createRouter, createWebHistory } from "vue-router";
+import Home from "./Home.vue";
+import Sign from "./Sign.vue";
+import SignIn from "./SignIn.vue";
+import SignUp from "./SignUp.vue";
+import MyPage from "./MyPage.vue";
+import AccountList from "./AccountList.vue";
+import AccountAdd from "./AccountAdd.vue";
+import LoginHome from "./LoginHome.vue";
+import Admin from "./Admin.vue";
+import AllReadProduct from "./AllReadProduct.vue";
+import AddProduct from "./AddProduct.vue";
+import AllReadHistory from "./AllReadHistory.vue";
+import EditProduct from "./Editproduct.vue";
+import EditUserInfo from "./EditUserInfo.vue";
+import DeleteProduct from "./DeleteProduct.vue";
+import Store from "./Store.vue";
+import PurchaseList from "./PurchaseList.vue";
+import SingleProductDetail from "./SingleProductDetail.vue";
+import SinglePurchasedItemDetail from "./SinglePurchasedItemDetail.vue";
+import UserInfo from "./UserInfo.vue";
+import MyPageMain from "./MyPageMain.vue";
+import EveryItem from "./EveryItem.vue";
+import Equipment from "./Equipment.vue";
+import Consumption from "./Consumption.vue";
+import Pet from "./Pet.vue";
+import SearchedProduct from "./SearchedProduct.vue";
+import AdminPageMain from "./AdminPageMain.vue";
+import StoreMainPage from "./StoreMainPage.vue";
+import NotFound from "./NotFound.vue";
 
 export default createRouter({
   history: createWebHistory(),
   scrollBehavior: () => ({ top: 0 }),
   routes: [
     {
-      path: '/',
+      path: "/",
       component: Home,
-    }, 
-    {
-      path: '/:pathMatch(.*)*',
-      redirect: '/404',
-      component: NotFound
     },
     {
-      path: '/mypage',
+      path: "/:pathMatch(.*)*",
+      redirect: "/404",
+      component: NotFound,
+    },
+    {
+      path: "/mypage",
       component: MyPage,
       children: [
         {
-          path: '',
+          path: "",
           component: MyPageMain,
         },
         {
-          path: 'userinfo',
+          path: "userinfo",
           component: UserInfo,
         },
         {
-          path: 'edituserinfo',
+          path: "edituserinfo",
           component: EditUserInfo,
         },
         {
-          path: 'accountlist',
+          path: "accountlist",
           component: AccountList,
         },
         {
-          path: 'accountadd',
+          path: "accountadd",
           component: AccountAdd,
         },
         {
-          path: 'purchaselist',
+          path: "purchaselist",
           component: PurchaseList,
         },
-        // {
-        //   path: 'purchaselist/singlepurchaseditem/:id',
-        //   component: SinglePurchasedItemDetail,
-        // },
       ],
     },
     {
-      path: '/sign',
+      path: "/sign",
       component: Sign,
       children: [
         {
-          path: 'signin',
+          path: "signin",
           component: SignIn,
         },
         {
-          path: 'signup',
+          path: "signup",
           component: SignUp,
         },
-      ]
+      ],
     },
     {
-      path: '/mypage/purchaselist/singlepurchaseditem/:id',
+      path: "/mypage/purchaselist/singlepurchaseditem/:id",
       component: SinglePurchasedItemDetail,
     },
     {
-      path: '/admin',
+      path: "/admin",
       component: Admin,
       children: [
         {
-          path: '',
+          path: "",
           component: AdminPageMain,
         },
         {
-          path: 'allreadproduct',
+          path: "allreadproduct",
           component: AllReadProduct,
         },
         {
-          path: 'allreadhistory',
+          path: "allreadhistory",
           component: AllReadHistory,
         },
         {
-          path: 'editproduct',
+          path: "editproduct",
           component: EditProduct,
         },
         {
-          path: 'addproduct',
+          path: "addproduct",
           component: AddProduct,
         },
         {
-          path: 'deleteproduct',
+          path: "deleteproduct",
           component: DeleteProduct,
         },
       ],
     },
     {
-      path: '/loginHome',
+      path: "/loginHome",
       component: LoginHome,
       meta: {
         auth: true,
       },
     },
     {
-      path: '/store',
+      path: "/store",
       component: Store,
       children: [
         {
-          path: '',
+          path: "",
           component: StoreMainPage,
         },
         {
-          path: 'everyitem',
+          path: "everyitem",
           component: EveryItem,
         },
         {
-          path: 'equipment',
+          path: "equipment",
           component: Equipment,
         },
         {
-          path: 'consumption',
+          path: "consumption",
           component: Consumption,
         },
         {
-          path: 'pet',
+          path: "pet",
           component: Pet,
         },
         {
-          path: 'searchedproduct',
+          path: "searchedproduct",
           component: SearchedProduct,
         },
       ],
     },
     {
-      path: '/store/singleproductdetail/:id',
+      path: "/store/singleproductdetail/:id",
       component: SingleProductDetail,
     },
     {
-      path: '/editUserInfo',
+      path: "/editUserInfo",
       component: EditUserInfo,
-    }
+    },
+    // {
+    //   path: "/404",
+    //   component: NotFound,
+    // },
+    // {
+    //   path: "/:pathMatch(.*)*",
+    //   redirect: "/404",
+    // },
   ],
-})
+});

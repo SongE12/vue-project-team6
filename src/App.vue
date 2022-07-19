@@ -10,7 +10,7 @@
       <TheFooter />
     </div>
     
-    
+        
     <transition name="modal-animation">
       <ProductModal
         v-if="clientStore.isShow" 
@@ -69,6 +69,7 @@ export default {
   display: flex;
   flex-direction: column;
   position: relative;
+  // font-family: 'Jua', sans-serif;
   .header {
     height: 64px;
     display: flex;
