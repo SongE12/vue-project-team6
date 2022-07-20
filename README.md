@@ -13,49 +13,38 @@
 ![로그인한 메인화면](https://user-images.githubusercontent.com/102528180/179905131-a25c2e1c-cf5c-4b98-9ace-d91d1604a15d.PNG)
 
 ### 회원가입
+사용자가 `username`에 종속되어 회원가입합니다.
 
+- 사용자 비밀번호는 암호화해 저장합니다.(관리자는 확인할 수 없습니다!)
+- 프로필 이미지는 1MB 이하여야 합니다.
+#### `/sign/signup` 화면
+![회원가입 화면](https://user-images.githubusercontent.com/102528180/179911610-0ac23070-e8d3-4951-8efb-64eb70934355.PNG)
 
+#### 회원가입 요구사항
+- 필수 입력 사항은 아이디, 비밀번호, 닉네임 총 세가지 입니다.
+- 아이디는 '이메일 주소 형식'이여야 합니다.
+- '다른 사용자와 같은' 아이디는 사용할 수 없습니다.
+- 비밀번호는 '8자 이상'이여야 합니다.
+- 닉네임은 '20자 이하'여야 합니다.
+- 요구사항에 맞지 않는 형식일때는 '에러 메세지'를 띄웁니다.
 
+##### 필수항목 입력 오류
+![필수항목 입력 오류](https://user-images.githubusercontent.com/102528180/179911640-f92ae979-b20c-420f-9b42-5561c51141f1.PNG)
 
+##### 아이디 입력 오류
+![아이디 입력 오류](https://user-images.githubusercontent.com/102528180/179912140-6ea7fd77-2b54-47cd-9905-8b320a4146e7.PNG)
+
+##### 비밀번호 입력 오류
+![비밀번호 입력 오류](https://user-images.githubusercontent.com/102528180/179912154-516d5896-3e02-4c96-a997-277bd887172c.PNG)
+
+##### 닉네임 입력 오류
+![닉네임 입력 오류](https://user-images.githubusercontent.com/102528180/179912159-6b570f94-d8f2-4f94-a34c-6bf8c5e042af.PNG)
 
 ### 로그인
 
 - 발급된 `accessToken`은 24시간 후 만료됩니다.(만료 후 다시 로그인 필요)
 
-```curl
-curl https://asia-northeast3-heropy-api.cloudfunctions.net/api/auth/login
-  \ -X 'POST'
-```
 
-```plaintext
-@param {String} email - 사용자 아이디 (필수!)
-@param {String} password - 사용자 비밀번호 (필수!) 
-@return {Object} userInfo
-@return {Object} userInfo.user - 로그인한 사용자 정보
-@return {String} userInfo.accessToken - 사용자 접근 토큰
-```
-
-요청 데이터 예시:
-
-```json
-{
-  "email": "thesecon@gmail.com",
-  "password": "********"
-}
-```
-
-응답 데이터 예시:
-
-```json
-{
-  "user": {
-    "email": "thesecon@gmail.com",
-    "displayName": "ParkYoungWoong",
-    "profileImg": "https://storage.googleapis.com/heropy-api/vAKjlJ-Gx5v163442.png"
-  },
-  "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjlQS3I...(생략)"
-}
-```
 
 ### 인증 확인
 
