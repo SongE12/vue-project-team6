@@ -1,76 +1,22 @@
-# 🤝 팀 프로젝트
-
-- 과제 기한: 
-  - 과제 수행 기간: 06월 09일(목) ~ 07월 22일(금)
-  - 코드 리뷰 기간: 07월 22일(금) ~ 07월 29일(금)
-- 내용: 
-  - API 분석 후 어떤 프로젝트로 진행/완성할 것인지 팀 단위로 결정하세요.
-
-## API 사용법
-
-모든 API 요청(Request) `headers`에 다음 정보가 꼭 포함되어야 합니다.<br>
-`username`은 다른 사람과 겹치지 않도록 주의하세요!<br>
-본명으로 만들면 나중에 문제가 발생했을 때 찾기가 쉬워요.(E.g. `ParkYoungWoong`)
-
-```json
-{
-  "content-type": "application/json",
-  "apikey": "FcKdtJs202204",
-  "username": "<YOUR_NAME>"
-}
-```
-
-<hr />
 
 ## 인증
 
-'인증' 관련 API는 모두 일반 사용자 전용입니다.
+'인증' API를 통해 로그인한 사용자만 `/loginHome`으로 이동할 수 있습니다.<br> 
+#### `/home`과 `/loginHome`의 차이점
+
+- 헤더의 Guest > 사용자 닉네임
+- MapleStory Market에 오신 것을 환영합니다! > 사용자 닉넴임 + MapleStory Market에 오신 것을 환영합니다!
+- 로그인/회원가입 > 마이페이지/제품검색
+
+![게스트 화면](https://user-images.githubusercontent.com/102528180/179904663-baf96551-6744-4fb9-b34f-1c9ce29567b9.PNG)
+
+![로그인한 메인화면](https://user-images.githubusercontent.com/102528180/179905131-a25c2e1c-cf5c-4b98-9ace-d91d1604a15d.PNG)
 
 ### 회원가입
 
-사용자가 `username`에 종속되어 회원가입합니다.
 
-- 사용자 비밀번호는 암호화해 저장합니다.(관리자는 확인할 수 없습니다!)
-- 프로필 이미지는 1MB 이하여야 합니다.
 
-```curl
-curl https://asia-northeast3-heropy-api.cloudfunctions.net/api/auth/signup
-  \ -X 'POST'
-```
 
-```plaintext
-@param {String} email - 사용자 아이디 (필수!)
-@param {String} password - 사용자 비밀번호, 8자 이상 (필수!)
-@param {String} displayName - 사용자 이름, 20자 이하 (필수!)
-@param {String} profileImgBase64 - 사용자 프로필 이미지(base64)
-@return {Object} object
-@return {Object} object.user - 회원가입한 사용자 정보
-@return {String} object.accessToken - 사용자 접근 토큰
-```
-
-요청 데이터 예시:
-
-```json
-{
-  "email": "thesecon@gmail.com",
-  "password": "********",
-  "displayName": "ParkYoungWoong",
-  "profileImgBase64": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAf...(생략)"
-}
-```
-
-응답 데이터 예시:
-
-```json
-{
-  "user": {
-    "email": "thesecon@gmail.com",
-    "displayName": "ParkYoungWoong",
-    "profileImg": "https://storage.googleapis.com/heropy-api/vjbtIrh5dGv163442.png"
-  },
-  "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IlM3WDhpQ...(생략)"
-}
-```
 
 ### 로그인
 
