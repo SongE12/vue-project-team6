@@ -61,7 +61,7 @@ import {mapStores} from 'pinia'
 import { useClientStore } from '~/store/client'
 export default {
   computed:{
-    ...mapStores([useClientStore])
+    ...mapStores(useClientStore)
   },
 
 }

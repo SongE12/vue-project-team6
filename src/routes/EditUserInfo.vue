@@ -95,7 +95,7 @@ input {
   font-size: 20px;
   border: 3px solid #f5f5f5;
   border-radius: 10px;
-  width: 400px;
+  width: 25vw;
   height: 30px;
   margin-bottom: 10px;
   &:focus {
@@ -114,7 +114,7 @@ input {
   border: none;
   background-color: #845FA7;
   border-radius: 50px;
-  width: 200px;
+  width: 13vw;
   height: 50px;
   cursor: pointer;
   color: #fff;

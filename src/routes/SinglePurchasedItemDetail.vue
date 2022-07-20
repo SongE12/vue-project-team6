@@ -57,17 +57,13 @@ import {useClientStore} from '~/store/client'
 import {mapStores} from 'pinia'
 
 export default {
-computed:{
-  ...mapStores([useClientStore]),
+  computed:{
+    ...mapStores(useClientStore),
   },
-
-async created(){
-        await this.clientStore.singlePurchasedList({detailId:this.$route.params.id})
-        // await this.clientStore.singlePurchasedItemPageData
-        await console.log(this.$route.params.id)
-        await console.log(this.clientStore.singlePurchasedItemPageData)
+  async created(){
+    await this.clientStore.singlePurchasedList({detailId:this.$route.params.id})
+    // await this.clientStore.singlePurchasedItemPageData
   },
-
   methods:{
   async purchaseDecision(detailId){
       await this.clientStore.purchaseDecision({detailId})
@@ -90,7 +86,7 @@ async created(){
     background-position-y: 92%;
     background-repeat : no-repeat;
     background-size : cover;
-    background-image: url('../backgroundImg/MyPage.png');
+    background-image: url('../assets/MyPage.png');
     .container {
       position: absolute;
       display: flex;

@@ -52,7 +52,7 @@ import {useAccountStore} from '~/store/account'
 
 export default {
   computed:{
-    ...mapStores([useClientStore,useAccountStore])  
+    ...mapStores(useClientStore, useAccountStore)  
   },
  async created(){
     await this.accountStore.readAccountList()

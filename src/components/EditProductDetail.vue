@@ -22,34 +22,6 @@
       </ul>
     </div>
 
-    <!-- <div>
-    <div
-      ref="title"
-      contenteditable
-      @blur="updateProduct('title')">
-      {{ adminStore.product.title }}
-    </div>
-    <div
-      ref="price"
-      contenteditable
-      @blur="updateProduct('price')">
-      {{ adminStore.product.price }}
-    </div>
-    <div
-      ref="description"
-      contenteditable
-      @blur="updateProduct('description')">
-      {{ adminStore.product.description }}
-    </div>
-    <div
-      ref="tags"
-      contenteditable
-      @blur="updateProduct('tags')">
-      {{ adminStore.product.tags }}
-    </div>
-    <div>{{ adminStore.product.thumbnail }}</div>
-  </div> -->
-
     <div class="detail">
       <div class="title">
         제품 이름: {{ adminStore.product.title }}
@@ -83,7 +55,7 @@
           <input
             v-model="price"
             placeholder="price"
-            type="number" />
+            type="text" />
         </div>
         <div class="edit_main_tag">
           <p>태그</p>
@@ -107,12 +79,14 @@
             type="text" />
         </div>
         <div class="file">
-          <input type="file" />
+          <input
+            type="file"
+            @change="SelectImage" />
         </div>
         <button
           class="edit_button"
           @click="updateProduct({
-            title, price, description, tags, id
+            title, price, description, tags, id, thumbnailBase64
           })">
           수정하기
         </button>
@@ -151,13 +125,19 @@ export default {
       this.adminStore.oneReadProduct(productId)
     },
     updateProduct(item) {
-      console.log(item)
       this.adminStore.editProduct(item)
+    },
+    SelectImage(event) {
+      console.log(event)
+      const { files } = event.target
+      for ( const file of files ) {
+        const reader =  new FileReader()
+        reader.readAsDataURL(file)
+        reader.addEventListener('load', e => {
+          this.thumbnailBase64 = e.target.result
+        })
+      }
     }
-    // updateProduct( type: 'title' || 'content' || '') {
-
-    //   if (type === 'title' && title === this.workspaceStore.workspace.title) return
-    //   if (type === 'content' && content === this.workspaceStore.workspace.content) return
   }
 }
 </script>

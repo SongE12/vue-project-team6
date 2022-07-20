@@ -48,11 +48,7 @@ import {useClientStore} from '~/store/client'
 import { useAccountStore } from '../store/account'
 export default {
   computed:{
-    ...mapStores([useClientStore,useAccountStore])
-  },
-
-  created(){
-   console.log( this.clientStore.searchItem )
+    ...mapStores(useClientStore, useAccountStore)
   },
   methods: {
     handler(payload){
@@ -65,7 +61,6 @@ export default {
       this.accountStore.isShow = !this.accountStore.isShow
     }
   },
-  
 }
 </script>
 

@@ -30,7 +30,7 @@ export default {
     background-position-y: 92%;
     background-repeat : no-repeat;
     background-size : cover;
-    background-image: url('../backgroundImg/MyPage.png');
+    background-image: url('../assets/MyPage.png');
     .container {
       padding-top: 40px;
       display: flex;
@@ -54,10 +54,6 @@ export default {
           justify-content: center;
           align-items: center;
           .menu_ui {
-            // display: flex;
-            // flex-direction: column;
-            // justify-content: center;
-            // align-items: center;
             width: 60%;
             height: 60vh;
             background-color: #F9C5D5;

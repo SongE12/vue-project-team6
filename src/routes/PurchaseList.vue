@@ -17,23 +17,15 @@ import {useClientStore} from '~/store/client'
 import { mapStores } from 'pinia'
 import PurchasedItem from '~/components/PurchasedItem.vue'
 export default {
-
   components:{
     PurchasedItem
   },
    computed:{
-    ...mapStores([useClientStore])
+    ...mapStores(useClientStore)
   },
   async created(){
     await this.clientStore.allPurchasedList()
   },
-
-  methods:{
-
-  },
- 
-
-
 }
 </script>
 

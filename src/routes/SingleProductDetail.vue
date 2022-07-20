@@ -13,7 +13,7 @@
         </div>
         
         <div class="single-product-data__price">
-          가격: {{ clientStore.singlePageData.price.toLocaleString('ko-KR') }}원
+          가격: {{ Number(clientStore.singlePageData.price).toLocaleString('ko-KR') }}원
         </div>
       
         <div class="single-product-data__description">
@@ -45,14 +45,12 @@
 import { useClientStore } from '~/store/client'
 import { useAccountStore } from '../store/account'
 import { mapStores } from 'pinia'
-export default {
-  
+export default { 
   computed:{
-    ...mapStores([useClientStore,useAccountStore])
+    ...mapStores(useClientStore, useAccountStore)
   },
   created(){
     this.clientStore.readSingleProduct(this.$route.params.id)
-     console.log(this.clientStore.singlePageData)
     //라우트에 params에들어있는 id를 이용해 상세페이지의 id를 
     //readSingleProduct에 전달하여 api 호출
   },
@@ -60,14 +58,13 @@ export default {
     handler(payload){
         if(!sessionStorage.getItem('token')){
           alert('제품구매는 로그인을 해야 할 수 있습니다!')
-          this.$router.push('/signin')
+          this.$router.push('/sign/signin')
           return 
         }
         this.accountStore.isShow = !this.accountStore.isShow
         this.clientStore.singleProductData = payload      
     }
   }
-  
 }
 </script> 
 
@@ -80,7 +77,7 @@ export default {
     background-position-y: 80%;
     background-repeat : no-repeat;
     background-size : cover;
-    background-image: url('../backgroundImg/Store.png');
+    background-image: url('../assets/Store.png');
     .container{
       width: 80vw;
       height: 80vh;

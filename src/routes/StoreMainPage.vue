@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <img
-      src="../backgroundImg/buyme.png"
+      src="../assets/buyme.png"
       alt="buyme" />
     <p>
       상점 메인 페이지입니다.

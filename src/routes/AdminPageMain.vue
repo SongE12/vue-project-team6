@@ -1,7 +1,7 @@
 <template>
   <div class="main">
     <img
-      src="../backgroundImg/Yeti.webp"
+      src="../assets/Yeti.webp"
       alt="YETI" />
     <div
       class="admin">

@@ -1,12 +1,14 @@
 import { defineStore } from 'pinia'
 import axios from 'axios'
 
+const { VITE_APIKEY, VITE_USERNAME } = import.meta.env
+
 const accountURL =
   'https://asia-northeast3-heropy-api.cloudfunctions.net/api/account'
 const headers = {
   'content-type': 'application/json',
-  apikey: 'FcKdtJs202204',
-  username: 'KDT2_team6',
+  apikey: VITE_APIKEY,
+  username: VITE_USERNAME,
 }
 
 export const useAccountStore = defineStore('account', {
@@ -47,7 +49,6 @@ export const useAccountStore = defineStore('account', {
       this.list.accounts.length === 0
         ? (this.noneTitle = true)
         : (this.noneTitle = false)
-      console.log(this.list)
     },
     async addAccountList(payload) {
       const { bankCode, accountNumber, phoneNumber, signature } = payload

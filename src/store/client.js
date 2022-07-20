@@ -1,12 +1,14 @@
 import axios from 'axios'
 import { defineStore } from 'pinia'
 
+const { VITE_APIKEY, VITE_USERNAME } = import.meta.env
+
 //export 안쪽에서 const사용이 안되서 위쪽에 API URL과 공통 header정보 명시해놓음
 // headers에 추가적인 내용 필요시 ...(전개연산자) 사용하기
 const headers = {
   'content-type': 'application/json',
-  apikey: 'FcKdtJs202204',
-  username: 'KDT2_team6',
+  apikey: VITE_APIKEY,
+  username: VITE_USERNAME,
   //username은 test용으로 지어짐 향후 완성되면 구현되면 KDT2_team6으로 변경예정
 }
 
@@ -53,7 +55,6 @@ export const useClientStore = defineStore('client', {
       })
 
       this.products = await products
-      console.log(products)
       const equiment = this.products.filter((i) => {
         return i.tags[0] === '장비'
       })
@@ -86,7 +87,6 @@ export const useClientStore = defineStore('client', {
             searchText: text,
           },
         })
-        console.log(data)
         this.searchItem = data
         //추가로직 = this.$router.push를 이용해 res의 id로 상세 페이지로 이동시키기
         //this.searchItem은 빈배열이다
@@ -104,7 +104,7 @@ export const useClientStore = defineStore('client', {
       }
 
       try {
-        const res = await axios({
+        await axios({
           url: `${END_POINT}/buy`,
           method: 'POST',
           headers: {
@@ -116,7 +116,6 @@ export const useClientStore = defineStore('client', {
             accountId: id,
           },
         })
-        console.log(res)
         this.allPurchasedList()
       } catch (err) {
         alert('로그인을 하지않았거나 등록된 계좌가 없습니다')
@@ -178,7 +177,6 @@ export const useClientStore = defineStore('client', {
         this.purchasedList = data.filter((i) => {
           return i.isCanceled === false
         })
-        console.log(this.purchasedList)
       } catch (err) {
         this.purchasedList = null
         console.log(err)

@@ -1,11 +1,13 @@
 import { defineStore } from 'pinia'
 import axios from 'axios'
 
+const { VITE_APIKEY, VITE_USERNAME } = import.meta.env
+
 const adminURL = 'https://asia-northeast3-heropy-api.cloudfunctions.net/api/products'
 const headers = {
   'content-type': 'application/json',
-  'apikey': 'FcKdtJs202204',
-  'username': 'KDT2_team6',
+  'apikey': VITE_APIKEY,
+  'username': VITE_USERNAME,
   'masterKey': 'true'
 }
 
@@ -24,7 +26,6 @@ export const useAdminStore = defineStore('admin', {
   getters: {},
   actions: {
     async AddProduct(addP) {
-      console.log(addP)
       const { title, price, description, tags, thumbnailBase64 } = addP
       await axios({
         url: adminURL,
@@ -32,24 +33,12 @@ export const useAdminStore = defineStore('admin', {
         headers,
         data: {
           title,
-          price,
+          price: Number(price),
           description,
           tags,
           thumbnailBase64
         }
       })
-    },
-    // Base64 Image
-    SelectImage(event) {
-      console.log(event)
-      const { files } = event.target
-      for ( const file of files ) {
-        const reader =  new FileReader()
-        reader.readAsDataURL(file)
-        reader.addEventListener('load', e => {
-          this.thumbnail = e.target.result
-        })
-      }
     },
     async allReadProduct () {
       const { data: products } = await axios ({
@@ -57,7 +46,6 @@ export const useAdminStore = defineStore('admin', {
         method: 'GET',
         headers
       })
-      console.log(products)
       this.products = products
     },
     async oneReadProduct (id) {
@@ -68,9 +56,7 @@ export const useAdminStore = defineStore('admin', {
         headers,
         id
       })
-      console.log(product)
       this.product = product
-      console.log(typeof product.tags)
     },
     async allReadHistory () {
       const { data: histories } = await axios ({
@@ -78,36 +64,35 @@ export const useAdminStore = defineStore('admin', {
         method: 'GET',
         headers
       })
-      console.log(histories)
       this.histories = histories
     },
     async editProduct (editP) {
       const id = editP.id
       const url = `https://asia-northeast3-heropy-api.cloudfunctions.net/api/products/${id}`
+      const { title, price, description, tags, thumbnailBase64 } = editP
       const { data: editproduct } = await axios ({
         url,
         method: 'PUT',
         headers,
         data: ({
-          title: editP.title,
-          price: editP.price,
-          description: editP.description,
-          tags: editP.tags
+          title,
+          price: Number(price),
+          description,
+          tags,
+          thumbnailBase64
         })
       })
-      console.log('editing')
       this.editproduct = editproduct
       this.allReadProduct()
     },
     async deleteProduct (id) {
       const url = `https://asia-northeast3-heropy-api.cloudfunctions.net/api/products/${id}`
-      const { data: product } = await axios ({
+      await axios ({
         url,
         method: 'DELETE',
         headers,
         id
       })
-      console.log (product)
     }
   }
 })

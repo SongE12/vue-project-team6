@@ -10,7 +10,6 @@
       <TheFooter />
     </div>
     
-        
     <transition name="modal-animation">
       <ProductModal
         v-if="clientStore.isShow" 
@@ -41,7 +40,6 @@ import { mapStores } from 'pinia'
 import { useClientStore } from '~/store/client'
 import { useUserStore } from '~/store/user'
 import { useAccountStore } from './store/account'
-
 export default {
   components: {
     TheHeader,
@@ -52,14 +50,14 @@ export default {
     BankModal
   },  
   computed:{
-    ...mapStores([useClientStore, useUserStore,useAccountStore]),
+    ...mapStores(useClientStore, useUserStore, useAccountStore),
   },
-
   created() {
     this.userStore.changeUserName()
   },
 }
 </script>
+
 
 <style lang="scss" scoped>
 
@@ -69,7 +67,6 @@ export default {
   display: flex;
   flex-direction: column;
   position: relative;
-  // font-family: 'Jua', sans-serif;
   .header {
     height: 64px;
     display: flex;

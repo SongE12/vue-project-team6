@@ -1,39 +1,52 @@
 <template>
-  <div class="container">
-    <p class="text-404">
-      해당 페이지를 찾을 수 없습니다!
-    </p>
-    <div class="image-404">
+  <div class="background-image">
+    <div class="container">
+      <div class="admin_page">
+        <img
+          src="../assets/unknown.webp"
+          alt="404 ERROR" />
+        <p>
+          404 ERROR
+        </p>
+      </div>
     </div>
   </div>
 </template>
 
 <style lang="scss" scoped>
-.container{
-  background-image: url('../BSE_imgs/test1.jpg');
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position-y: 50%;
+
+.background-image {
   position: relative;
-
-  .text-404{
-    font-size: 60px;
-    font-weight: 700;
-
-    color: pink;
-    margin-top: 10%;
-  }
-  .image-404{
-  background-image: url('../BSE_imgs/test2.webp');
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position-x:50%;
-  border-radius: 50%;
-  height:200px;
-  width:200px;
-  position: absolute;
-  bottom: 7%;
-  left: 35%;
+  height: 100%;
+  background-position-y: 92%;
+  background-repeat : no-repeat;
+  background-size : cover;
+  background-image: url('../assets/MyPage.png');
+  .container {
+    padding-top: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .admin_page {
+      background: rgb(255, 255, 255, 0.8);
+      width: 60%;
+      height: 75vh;
+      border-radius: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+        img {
+          margin-top: 10px;
+          width: 320px;
+          height: 300px;
+        }
+        p {
+          color: #460f79;
+          font-size: 55px;
+          font-weight: 700;
+        }
+    }
   }
 }
 </style>

@@ -7,7 +7,8 @@
       <div class="user_in">
         <RouterLink
           to="/sign"
-          class="a">
+          class="a"
+          @click="errorReset">
           로그인 / 회원가입
         </routerlink>
       </div>
@@ -26,11 +27,13 @@
 </template>
 
 <script>
-import { mapStores } from 'pinia'
-import { useMainStore } from '~/store/main'
+import { mapActions } from 'pinia'
+import { useUserStore } from '~/store/user'
 
 export default {
-  ...mapStores(useMainStore)
+  methods: {
+    ...mapActions(useUserStore, ['errorReset']),
+  }
 }
 </script>
 
@@ -41,7 +44,7 @@ export default {
     background-position-y: 80%;
     background-repeat : no-repeat;
     background-size : cover;
-    background-image: url('../backgroundImg/Main.png');
+    background-image: url('../assets/Main.png');
     .welcome {
       padding-top: 30px;
       font-size: 24px;

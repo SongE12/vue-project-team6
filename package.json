@@ -5,18 +5,22 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "netlify": "netlify dev"
   },
   "dependencies": {
     "axios": "^0.27.2",
+    "dotenv": "^16.0.1",
     "pinia": "^2.0.14",
     "vue": "^3.2.25",
     "vue-router": "^4.0.16"
   },
   "devDependencies": {
+    "@netlify/functions": "^1.0.0",
     "@vitejs/plugin-vue": "^2.3.3",
     "eslint": "^8.17.0",
     "eslint-plugin-vue": "^9.1.1",
+    "netlify-cli": "^10.10.0",
     "sass": "^1.52.3",
     "vite": "^2.9.9"
   }

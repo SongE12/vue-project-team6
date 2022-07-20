@@ -24,7 +24,6 @@
 <script>
 import { mapStores } from 'pinia'
 import { useAccountStore } from '~/store/account'
-import { useMainStore } from '~/store/main'
 
 export default {
   data() {
@@ -33,10 +32,7 @@ export default {
     }
   }, 
   computed: {
-    ...mapStores([
-      useMainStore,
-      useAccountStore
-    ])
+    ...mapStores(useAccountStore)
   },
   methods: {
   }

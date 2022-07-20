@@ -3,7 +3,7 @@
     <div class="inner">
       <div>
         <img
-          src="../BSE_imgs/login.png"
+          src="../assets/login.png"
           alt="login" />
         <div class="id">
           <input
@@ -76,7 +76,7 @@ export default {
   background-position-y: 80%;
   background-repeat : no-repeat;
   background-size : cover;
-  background-image: url('../backgroundImg/Main.png');
+  background-image: url('../assets/Main.png');
 }
 .inner {
   display: flex;

@@ -32,17 +32,6 @@
           @click="$router.push(`/admin/deleteproduct`)">
           제품 삭제
         </button>
-        <!-- <div
-          v-for="nav in navigations"
-          :key="nav.name"
-          class="nav-item">
-          <RouterLink
-            :to="nav.href"
-            active-class="active"
-            class="nav-link">
-            {{ nav.name }}
-          </RouterLink>
-        </div> -->
       </div>
     </div>
   </div>
@@ -53,29 +42,7 @@ import { mapStores } from 'pinia'
 import { useAdminStore } from '~/store/admin'
 
 export default {
-  ...mapStores(useAdminStore),
-  // data() {
-  //   return {
-  //     navigations: [
-  //       {
-  //         name: 'AllReadProduct',
-  //         href: '/admin/allreadproduct'
-  //       },
-  //       {
-  //         name: 'AllReadHistory',
-  //         href: '/admin/allreadhistory'
-  //       },
-  //       {
-  //         name: 'EditProduct',
-  //         href: '/admin/editproduct'
-  //       },
-  //       {
-  //         name: 'AddProduct',
-  //         href: '/admin/addproduct'
-  //       }
-  //     ]
-  //   }
-  // }
+  ...mapStores(useAdminStore)
 }
 </script>
 

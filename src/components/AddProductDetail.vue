@@ -39,12 +39,12 @@
       <input
         type="file"
         placeholder="file"
-        @change="UpImage" />
+        @change="SelectImage" />
     </div>
     <button
       class="add_button"
       @click="AddProd({
-        title, description, price, tags
+        title, description, price, tags, thumbnailBase64
       })">
       추가
     </button>
@@ -71,36 +71,9 @@ export default {
   },
   methods: {
     AddProd(item) {
-      console.log(item)
       this.adminStore.AddProduct(item)
     },
-    UpImage(event) {
-      console.log(event)
-      this.adminStore.SelectImage(event)
-    },
-    // async AddProduct() {
-    //   const res = await fetch('https://asia-northeast3-heropy-api.cloudfunctions.net/api/products ', {
-    //     method: 'POST',
-    //     headers: {
-    //       'content-type': 'application/json',
-    //       'apikey': 'FcKdtJs202204',
-    //       'username': 'KDT2_team6' ,
-    //       'masterKey': 'true'
-    //     },
-    //     body: JSON.stringify({
-    //       title: this.title,
-    //       price: this.price,
-    //       description: this.description,
-    //       tags: this.tags, 
-    //       thumbnailBase64: this.thumbnail
-    //     })
-    //   })
-    //   const product = await res.json()
-    //   console.log(product)
-    //   console.log(product.tags)
-    // },
     SelectImage(event) {
-      console.log(event)
       const { files } = event.target
       for ( const file of files ) {
         const reader =  new FileReader()

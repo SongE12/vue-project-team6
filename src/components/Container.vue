@@ -34,7 +34,7 @@ export default {
     StoreLNB
   },
   computed:{
-    ...mapStores([useAdminStore,useClientStore,useAccountStore])
+    ...mapStores(useAdminStore, useClientStore, useAccountStore)
   },
   async created(){
     await this.clientStore.allReadProduct()

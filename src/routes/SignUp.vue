@@ -3,7 +3,7 @@
     <div class="inner">
       <div>
         <img
-          src="../BSE_imgs/login.png"
+          src="../assets/login.png"
           alt="login" />
         <div class="id">
           <input
@@ -81,7 +81,6 @@ export default {
     selectFile(event) {
       const reader = new FileReader()
       for(const file of event.target.files) {
-        console.log(file)
         reader.readAsDataURL(file)
         reader.addEventListener('load', e => {
           this.profileImgBase64 = e.target.result
@@ -163,7 +162,7 @@ $width:450px;
   background-position-y: 80%;
   background-repeat : no-repeat;
   background-size : cover;
-  background-image: url('../backgroundImg/Main.png');
+  background-image: url('../assets/Main.png');
 }
 .inner {
   display: flex;

@@ -1,7 +1,7 @@
 <template>
   <div class="main">
     <img
-      src="../backgroundImg/pinkbin.png"
+      src="../assets/pinkbin.png"
       alt="PINKBIN" />
     <div
       class="phrases">
