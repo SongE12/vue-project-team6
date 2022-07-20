@@ -221,6 +221,9 @@ router.beforeEach(async to => {
 - 관리자 페이지
 ![image](https://user-images.githubusercontent.com/65530775/179937907-b9aa96f9-31f6-4eeb-8920-472591ef6b35.png)
 
+- 제품 첫 페이지
+![image](https://user-images.githubusercontent.com/65530775/179967310-6f75bc6d-fc50-476a-94d0-0953ea20702c.png)
+
 - 제품 구매 페이지
 ![image](https://user-images.githubusercontent.com/65530775/179938285-bd0066c0-a151-4dd1-8009-7b965512b0aa.png)
 
