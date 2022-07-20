@@ -231,7 +231,7 @@ router.beforeEach(async to => {
 
 - 완성된 메인, 마이, 관리자, 제품 구매 페이지들을 router-view를 이용하여 처리, 아래는 마이 페이지를 router-view를 이용하여 처리 한 예시 코드
 
-```
+```js
 {
       path: '/mypage',
       component: MyPage,
