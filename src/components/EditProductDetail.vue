@@ -1,97 +1,74 @@
 <template>
   <div class="container">
     <div class="product">
-      <p class="search_title">
-        정보를 볼 제품을 클릭하세요!
-      </p>
+      <p class="search_title">정보를 볼 제품을 클릭하세요!</p>
       <ul class="product-list">
         <li
           v-for="product in adminStore.products"
           :key="product.id"
           class="product-item"
-          :productId="product.id">
+          :productId="product.id"
+        >
           <div
             class="product-image"
             :style="{ backgroundImage: `url(${product.thumbnail})` }"
-            @click="clickDetail(`${product.id}`)">
-          </div>
-          <div class="product-title">
-            제품 ID : {{ product.id }}
-          </div>
+            @click="clickDetail(`${product.id}`)"
+          ></div>
+          <div class="product-title">제품 ID : {{ product.id }}</div>
         </li>
       </ul>
     </div>
 
     <div class="detail">
-      <div class="title">
-        제품 이름: {{ adminStore.product.title }}
-      </div>
-      <div class="price">
-        제품 가격: {{ adminStore.product.price }}
-      </div>
-      <div class="description">
-        제품 설명: {{ adminStore.product.description }}
-      </div>
-      <div class="tags">
-        제품 태그: {{ adminStore.product.tags }}
-      </div>
+      <div class="title">제품 이름: {{ adminStore.product.title }}</div>
+      <div class="price">제품 가격: {{ adminStore.product.price }}</div>
+      <div class="description">제품 설명: {{ adminStore.product.description }}</div>
+      <div class="tags">제품 태그: {{ adminStore.product.tags }}</div>
       <div class="edit_info">
         <div class="edit_title">
           <p>이름</p>
-          <input
-            v-model="title"
-            placeholder="edit_title"
-            type="text" />
+          <input v-model="title" placeholder="edit_title" type="text" />
         </div>
         <div class="edit_description">
           <p>설명</p>
-          <input
-            v-model="description"
-            placeholder="edit_description"    
-            type="text" />
+          <input v-model="description" placeholder="edit_description" type="text" />
         </div>
         <div class="edit_price">
           <p>가격</p>
-          <input
-            v-model="price"
-            placeholder="price"
-            type="text" />
+          <input v-model="price" placeholder="price" type="text" />
         </div>
         <div class="edit_main_tag">
           <p>태그</p>
-          <input
-            v-model="tags[0]"
-            placeholder="tags ( 장비, 소비, 펫 )"
-            type="text" />
+          <input v-model="tags[0]" placeholder="tags ( 장비, 소비, 펫 )" type="text" />
         </div>
         <div class="edit_sub_tag">
           <p>태그</p>
-          <input
-            v-model="tags[1]"
-            placeholder="tags2 ( anything )"
-            type="text" />
+          <input v-model="tags[1]" placeholder="tags2 ( anything )" type="text" />
         </div>
         <div class="edit_id_tag">
           <p>ID</p>
-          <input
-            v-model="id"
-            placeholder="id (필수 입력!)"
-            type="text" />
+          <input v-model="id" placeholder="id (필수 입력!)" type="text" />
         </div>
         <div class="file">
-          <input
-            type="file"
-            @change="SelectImage" />
+          <input type="file" @change="SelectImage" />
         </div>
         <button
           class="edit_button"
-          @click="updateProduct({
-            title, price, description, tags, id, thumbnailBase64
-          })">
+          @click="
+            updateProduct({
+              title,
+              price,
+              description,
+              tags,
+              id,
+              thumbnailBase64,
+            })
+          "
+        >
           수정하기
         </button>
       </div>
-    <!-- <button @click="updateProduct({title, content, description, tags},id)">
+      <!-- <button @click="updateProduct({title, content, description, tags},id)">
       수정중
     </button> -->
     </div>
@@ -99,46 +76,46 @@
 </template>
 
 <script>
-import { mapStores } from 'pinia'
-import { useAdminStore } from '../store/admin'
+import { mapStores } from "pinia";
+import { useAdminStore } from "../store/admin";
 
 export default {
   data() {
     return {
       products: [],
       product: {},
-      title: '',
-      price: '',
-      description: '',
+      title: "",
+      price: "",
+      description: "",
       tags: [],
-      id: ''
-    }
+      id: "",
+    };
   },
   computed: {
-    ...mapStores(useAdminStore)
+    ...mapStores(useAdminStore),
   },
   created() {
-  this.adminStore.allReadProduct()
+    this.adminStore.allReadProduct();
   },
   methods: {
     clickDetail(productId) {
-      this.adminStore.oneReadProduct(productId)
+      this.adminStore.oneReadProduct(productId);
     },
     updateProduct(item) {
-      this.adminStore.editProduct(item)
+      this.adminStore.editProduct(item);
     },
     SelectImage(event) {
-      const { files } = event.target
-      for ( const file of files ) {
-        const reader =  new FileReader()
-        reader.readAsDataURL(file)
-        reader.addEventListener('load', e => {
-          this.thumbnailBase64 = e.target.result
-        })
+      const { files } = event.target;
+      for (const file of files) {
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.addEventListener("load", (e) => {
+          this.thumbnailBase64 = e.target.result;
+        });
       }
-    }
-  }
-}
+    },
+  },
+};
 </script>
 
 <style lang="scss" scoped>
@@ -189,7 +166,10 @@ export default {
     }
   }
   .detail {
-    .title, .price, .tags, .description {
+    .title,
+    .price,
+    .tags,
+    .description {
       font-weight: 700;
       margin-left: 10px;
     }
@@ -200,10 +180,10 @@ export default {
       color: #08abb4;
     }
     .description {
-      color: #845FA7;
+      color: #845fa7;
     }
     .tags {
-      color: #F6921D;
+      color: #f6921d;
     }
     .edit_info {
       display: flex;
@@ -211,7 +191,12 @@ export default {
       flex-direction: column;
       align-items: center;
       margin-top: 10px;
-      .edit_title, .edit_description, .edit_price, .edit_main_tag, .edit_sub_tag, .edit_id_tag {
+      .edit_title,
+      .edit_description,
+      .edit_price,
+      .edit_main_tag,
+      .edit_sub_tag,
+      .edit_id_tag {
         width: 85%;
         font-size: 16px;
         font-weight: 700;
@@ -229,9 +214,9 @@ export default {
         margin-top: 10px;
       }
       .edit_button {
-        border: solid 3px #845FA7;
+        border: solid 3px #845fa7;
         border-radius: 5px;
-        background-color: #845FA7;
+        background-color: #845fa7;
         color: #fff;
         cursor: pointer;
         font-size: 14px;

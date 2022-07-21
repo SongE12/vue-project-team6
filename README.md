@@ -1,11 +1,27 @@
 # 🤝 팀 프로젝트
 
-- 과제 기한: 
+## 팀원:
+  - 김수현, 김정환, 백송이, 변승훈
+
+## 과제 기한: 
   - 과제 수행 기간: 06월 09일(목) ~ 07월 22일(금)
   - 코드 리뷰 기간: 07월 22일(금) ~ 07월 29일(금)
-- 내용: 
+  
+## 내용: 
   - API 분석 후 어떤 프로젝트로 진행/완성할 것인지 팀 단위로 결정하세요.
-- 결과 : 
+  
+## 과정: 
+  - #### 6.9 ~ 6.20 <br />
+  디자인 시안, 컴포넌트 설계도, 기능 구현 순서도 초안 설계에 관한 회의 및 Figma를 통해 시각화하여 작성 <br /> 
+  https://www.figma.com/file/roeI04BNqJE6OID4k6LKNB/team6?node-id=0%3A1
+  - #### 6.21 ~ 6.22 <br />
+  프로젝트 기본 환경(vite) 세팅 및 메인 페이지 구현
+  - #### 6.22 ~ 7.22 <br />
+  각 조원 별 맡은 파트 기능 구현 및 페이지 스타일 통일
+  - #### 7.20 ~ 7.22 <br />
+  README.md 작성 및 사이트 배포 테스트
+  
+## 결과:
   - 배포 사이트: https://maplestorymarket.netlify.app
 
 <hr />
@@ -144,6 +160,7 @@ router.beforeEach(async to => {
 
 
 
+<hr />
 
 ## 계좌 (변승훈)
 
@@ -221,6 +238,9 @@ router.beforeEach(async to => {
 - 관리자 페이지
 ![image](https://user-images.githubusercontent.com/65530775/179937907-b9aa96f9-31f6-4eeb-8920-472591ef6b35.png)
 
+- 제품 첫 페이지
+![image](https://user-images.githubusercontent.com/65530775/179967310-6f75bc6d-fc50-476a-94d0-0953ea20702c.png)
+
 - 제품 구매 페이지
 ![image](https://user-images.githubusercontent.com/65530775/179938285-bd0066c0-a151-4dd1-8009-7b965512b0aa.png)
 
@@ -261,6 +281,61 @@ router.beforeEach(async to => {
     },
 ```
 - 코드 리팩토링 조언, 구조적인 부분에 대한 조언 등
+
+
+<hr />
+
+## 제품 (김정환)
+
+### store 페이지
+- 관리자가 구현한 전체 제품 조회 목록api를 filter함수를 이용하여 제품전체보기,장비,소비,펫 4개의 카테고리로 나누어 구현 했습니다 이미지에 보이는 버튼을 클릭하면 카테고리와 관련된 상품만 조회 할 수 있습니다 
+<img width='1400' alt='store 페이지' src='https://i.esdrop.com/d/f/zzioddNSyH/PpGRCaRGBC.png' />
+
+### 제품 검색
+- 검색창에 제품 이름을 입력 했을경우 관련된 제품을 띄우는 기능
+- 검색 결과가 존재하지 않는다면 경고문을 띄웁니다 
+<img width="1360" alt="제품 검색" src="https://i.esdrop.com/d/f/zzioddNSyH/dsl1bxgp7Q.png" />
+<br/>
+
+### 구매 신청 
+- 로그인 하지 않은경우 제품을 구매 할 수 없습니다 
+- 계좌 모달과 구매신청 모달을 거쳐 기능이 동작합니다
+- 구매 신청시 제품의 금액 만큼 계좌에서 결제 처리가 됩니다
+- 계좌 잔액이 부족한 경우 구매를 할 수없고 잔액부족에 대한 경고문을 띄웁니다
+
+
+### 계좌 모달
+- 제품 구매시 계좌를 선택 할 수 있는 기능
+<img width='1400' alt="계좌 모달" src='https://i.esdrop.com/d/f/zzioddNSyH/omzM0wv3N0.png' />
+
+
+### 구매 신청 모달 
+- 제품 구매시 최종적으로 사용자에게 구매의사을 결정 할 수 있게 만든 기능 
+<img width='1400' alt="구매 신청 모달" src="https://i.esdrop.com/d/f/zzioddNSyH/k87u2ZqA5U.png" />
+
+
+<br/>
+
+### 제품 상세페이지
+제품에 대한 설명을 볼수 있는 페이지 입니다 동적라우팅과 단일 제품 상세 조회 공통 api 이용해 구현 했습니다
+<img width='1500' alt="상세페이지" src="https://i.esdrop.com/d/f/zzioddNSyH/NcL6SEZgUY.png" />
+
+
+### 전체 제품 구매내역
+구매 한 제품을 전체를 확인 할 수 있습니다 구매 취소, 구매 확정,단일 제품 구매내역 조회가 가능한 구조로 구현 했습니다
+<img width='1200' alt='전체 제품 구매내역' src='https://i.esdrop.com/d/f/zzioddNSyH/TWd7BKtFCR.png'/>
+
+### 단일 제품 구매내역 
+구매 한 제품 전체중 원하는 제품에 대한 결제 계좌번호,은행/ 제품설명,가격,이름을 조회 할 수 있고 구매 확정,취소가 가능한 형태로 구현 했습니다 
+<img width='1550' alt='단일 제품 구매내역' src='https://i.esdrop.com/d/f/zzioddNSyH/qBlKn2oMFh.png'/>
+
+### 구매취소 기능
+- 구매 취소시 결제한 계좌로 금액이 환불됩니다
+- 구매 취소후에는 해당 구매내역을 조회 할 수 없습니다
+
+### 구매확정 기능
+- 구매확정시 구매 취소 할 수 없습니다 
+- 구매확정시 구매취소,확정버튼은 숨김처리되어 더이상 사용 할 수 없습니다
 
 <hr />
 
