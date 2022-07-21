@@ -8,7 +8,6 @@ router.beforeEach(async to => {
 
   if(to.meta.auth) {
     const user = await validateTokenUser()
-    // user.email === 'admin@team6.com' && 
     if (user.displayName === 'admin') {
       userStore.userInfo = user
       userStore.isSignin = true

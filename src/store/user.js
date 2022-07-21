@@ -125,6 +125,7 @@ export const useUserStore = defineStore('user', {
           }
         })
         const user = await res.data
+        this.editErrorMsg = ''
         this.userInfo.displayName = user.displayName
         this.userModal = true
       } catch {
