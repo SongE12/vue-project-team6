@@ -12,7 +12,7 @@
         class="edit_userinfo"
         :class="{ active: /^\/mypage\/edituserinfo.*/.test($route.fullPath) }"
         @click="$router.push(`/mypage/edituserinfo`)">
-        <button @click="editErrorReset">
+        <button>
           내정보 수정하기
         </button>
       </button>

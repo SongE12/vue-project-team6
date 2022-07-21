@@ -102,11 +102,6 @@ export const useUserStore = defineStore('user', {
         }
       }
     },
-    errorReset() {
-      this.signinError = false
-      this.signUpMsg = ''
-      this.signUpError = ''
-    },
     async editUserInfo(userObj) {
       const accessToken = window.sessionStorage.getItem('token')
       try {
@@ -136,9 +131,6 @@ export const useUserStore = defineStore('user', {
         }
       }
     },
-    editErrorReset() {
-      this.editErrorMsg = ''
-    },
     changeUserName() {
       if(window.sessionStorage.getItem('userName')) {
         this.userInfo.displayName = window.sessionStorage.getItem('userName')
@@ -151,6 +143,14 @@ export const useUserStore = defineStore('user', {
     modalOff() {
       this.signModal = false
       this.userModal = false
-     }
+     },
+     errorReset() {
+      this.signinError = false
+      this.signUpMsg = ''
+      this.signUpError = ''
+    },
+    editErrorReset() {
+      this.editErrorMsg = ''
+    },
   },
 })

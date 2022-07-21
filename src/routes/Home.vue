@@ -7,8 +7,7 @@
       <div class="user_in">
         <RouterLink
           to="/sign"
-          class="a"
-          @click="errorReset">
+          class="a">
           로그인 / 회원가입
         </routerlink>
       </div>

@@ -75,9 +75,12 @@ export default {
   },
   computed: {
     ...mapState(useUserStore, ['isSignup', 'signUpMsg', 'signUpError', 'modal'])
-  }, 
+  },
+  created() {
+    this.errorReset()
+  },
   methods: {
-    ...mapActions(useUserStore, ['signUp', 'reset']),
+    ...mapActions(useUserStore, ['signUp', 'errorReset']),
     selectFile(event) {
       const reader = new FileReader()
       for(const file of event.target.files) {
@@ -87,7 +90,6 @@ export default {
         })
       }
     },
-
   }
 }
 </script>

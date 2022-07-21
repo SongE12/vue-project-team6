@@ -62,9 +62,12 @@ export default {
   },
   computed: {
     ...mapState(useUserStore, ['editErrorMsg']),
-  }, 
+  },
+  created() {
+    this.editErrorReset()
+  },
   methods: {
-    ...mapActions(useUserStore, ['editUserInfo']),
+    ...mapActions(useUserStore, ['editUserInfo', 'editErrorReset']),
     selectFile(event) {
       const reader = new FileReader()
       for(const file of event.target.files) {

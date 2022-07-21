@@ -10,9 +10,9 @@ import { useUserStore } from '~/store/user'
 
 export default {
   data() {
-      return {
-          routerView: true
-      }
+    return {
+        routerView: true
+    }
   },
   computed: {
       ...mapState(useUserStore, ['userInfo'])

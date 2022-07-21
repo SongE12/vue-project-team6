@@ -28,8 +28,7 @@
           </span>
           <RouterLink
             class="join"
-            to="/sign/signup"
-            @click="errorReset()">
+            to="/sign/signup">
             회원가입
           </RouterLink>
         </div>
@@ -59,7 +58,10 @@ export default {
   },
   computed: {
     ...mapState(useUserStore, ['signinError'])
-  },  
+  },
+  created() {
+    this.errorReset()
+  },
   methods: {
     ...mapActions(useUserStore, ['signIn', 'errorReset']),
   }
